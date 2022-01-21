@@ -37,7 +37,7 @@ const reducer = (state = initialState, action)=>{
           position: action.payload.position,
           nickname: action.payload.nickname,
           description: action.payload.description,
-          id: Date.now()
+          id: action.payload.id
         }
         return {
           ...state,

@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import { addSmurfs } from '../actions';
 
-const AddForm = (props) => {
-    const {smurfs, error} = props;
-    const [state, setState] = useState({});
+const AddForm = ({error}) => {
+    const [state, setState] = useState({
+        name:"",
+        position:"",
+        nickname:"",
+        description:""
+    });
 
     const dispatch = useDispatch();
       
@@ -25,7 +29,7 @@ const AddForm = (props) => {
             dispatch(addSmurfs(errorMessage));
         } else {
             //dispatch an addSmurf action
-            dispatch(addSmurfs(smurfs));
+            dispatch(addSmurfs(state));
         }
     }
 
