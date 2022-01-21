@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { addSmurfs } from '../actions';
 
-const AddForm = ({error}) => {
-    const [state, setState] = useState({
-        name:"",
-        position:"",
-        nickname:"",
-        description:""
-    });
+const AddForm = (props) => {
+    const {smurfs, error} = props;
+    const [state, setState] = useState({});
 
+    const dispatch = useDispatch();
+      
     //remove when error state is added
     const errorMessage = error;
 
@@ -24,10 +22,10 @@ const AddForm = ({error}) => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //dispatch a custom error action
-            addSmurfs(errorMessage);
+            dispatch(addSmurfs(errorMessage));
         } else {
             //dispatch an addSmurf action
-            addSmurfs(state);
+            dispatch(addSmurfs(smurfs));
         }
     }
 
@@ -58,13 +56,13 @@ const AddForm = ({error}) => {
     </section>);
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = state =>{
+    console.log(state)
     return {
         smurfs: state.smurfs,
-        error: state.error,
+        error: state.error
     }
 }
-
 
 
 export default connect(mapStateToProps, {addSmurfs})(AddForm);
