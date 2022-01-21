@@ -1,8 +1,33 @@
+import { FETCH_SUCCESS, FETCH_LOADING, FETCH_ERROR, FETCH_DATA } from "../actions";
 
 export const initialState = {
+  smurfs: [],
+  loading: false,
+  error: ''
 }
 
-const reducer = ()=>{
+const reducer = (state = initialState, action)=>{
+  switch(action.type){
+    case FETCH_LOADING:
+      return {
+        ...state,
+        loading: true
+      }
+    case FETCH_SUCCESS: 
+      return {
+        ...state,
+        smurfs: action.payload,
+        loading: false
+      }
+    case FETCH_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      }
+    default:
+      return state;
+  }
 }
 
 //**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//
