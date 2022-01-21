@@ -1,4 +1,4 @@
-import { FETCH_SUCCESS, FETCH_LOADING, FETCH_ERROR, FETCH_DATA } from "../actions";
+import { FETCH_SUCCESS, FETCH_LOADING, FETCH_ERROR, POST_ERROR, ADD_DATA } from "../actions";
 
 export const initialState = {
   smurfs: [],
@@ -24,6 +24,24 @@ const reducer = (state = initialState, action)=>{
         ...state,
         loading: false,
         error: action.payload
+      }
+    case POST_ERROR:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload
+      }
+    case ADD_DATA:
+      return {
+        ...state,
+        loading: false,
+        smurfs: [{
+          name: action.payload.name,
+          nickname: action.payload.nickname,
+          position: action.payload.position,
+          summary: action.payload.description,
+          id: Date.now()
+        }]
       }
     default:
       return state;
