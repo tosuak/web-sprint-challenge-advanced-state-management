@@ -32,21 +32,23 @@ const reducer = (state = initialState, action)=>{
         error: action.payload
       }
     case ADD_DATA:
-      return {
-        ...state,
-        loading: false,
-        smurfs: [{
+      const newSmurfs = {
           name: action.payload.name,
-          nickname: action.payload.nickname,
           position: action.payload.position,
-          summary: action.payload.description,
+          nickname: action.payload.nickname,
+          description: action.payload.description,
           id: Date.now()
-        }]
+        }
+        return {
+          ...state,
+          smurfs: [...state.smurfs, newSmurfs]
+        }
+      default:
+        return state;  
       }
-    default:
-      return state;
+  
   }
-}
+
 
 //**************DO NOT EDIT ANY CODE BEYOND THIS POINT**************//
 export default reducer;

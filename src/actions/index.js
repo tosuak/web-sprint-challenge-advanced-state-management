@@ -14,14 +14,14 @@ export const fetchSmurfs = smurf => dispatch => {
     dispatch(success(resp.data))
   })
   .catch(err => {
-    dispatch(fetchError(err.toJSON.message))
+    dispatch(fetchError(err))
   })
   axios.post('http://localhost:3333/smurfs', smurf)
   .then(resp => {
-    dispatch(addSmurf(resp.body))
+    dispatch(addSmurf([resp.body]))
   })
   .catch(err => {
-    dispatch(postError(err.toJSON.message))
+    dispatch(postError(err))
   })
 }
 

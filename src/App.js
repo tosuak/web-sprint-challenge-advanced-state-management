@@ -22,8 +22,6 @@ const App = (props)=> {
         <SmurfList/>
         <AddForm/>
       </main>
-    {/* {props.error && <h1>{props.error}</h1>}
-    {props.loading && <h1>...Is loading</h1>}  */}
     </div>
     
   );
