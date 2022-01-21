@@ -14,7 +14,6 @@ export const fetchSmurfs = () => dispatch => {
     dispatch(success(resp.data))
   })
   .catch(err => {
-    console.log(err.message)
     dispatch(fetchError(err.message))
   })
 }
@@ -25,9 +24,8 @@ export const addSmurfs = smurf => dispatch => {
     dispatch(success(resp.data))
   })
   .catch(err => {
-    console.log(err)
     dispatch(postError(err.message))
-    dispatch(errorValue(err.message))
+    dispatch(errorValue(err.response.data.Error))
   })
 }
 

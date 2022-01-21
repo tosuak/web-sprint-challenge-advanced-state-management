@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addSmurfs } from '../actions';
 
-const AddForm = ({smurfs, error, dispatch}) => {
+const AddForm = ({error}) => {
     const [state, setState] = useState({
         name:"",
         position:"",
@@ -24,10 +24,10 @@ const AddForm = ({smurfs, error, dispatch}) => {
         e.preventDefault();
         if (state.name === "" || state.position === "" || state.nickname === "") {
             //dispatch a custom error action
-            dispatch(addSmurfs(errorMessage));
+            addSmurfs(errorMessage);
         } else {
             //dispatch an addSmurf action
-            dispatch(addSmurfs(state));
+            addSmurfs(state);
         }
     }
 
@@ -62,7 +62,6 @@ const mapStateToProps = state => {
     return {
         smurfs: state.smurfs,
         error: state.error,
-        dispatch: state.action
     }
 }
 
