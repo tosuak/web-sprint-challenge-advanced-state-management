@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
     return(<div className="listContainer">
         {
-            smurfs.map(smurf => <Smurf smurf={smurf}/>)    
+            smurfs.map(smurf => <Smurf smurf={smurf} key={smurf.id}/>)    
         }
     </div>);
 }

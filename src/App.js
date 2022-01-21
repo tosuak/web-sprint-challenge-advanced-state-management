@@ -1,6 +1,6 @@
 import React, { Component, useEffect } from "react";
 import { connect } from 'react-redux';
-import { fetchSmurfs } from "./actions";
+import { fetchSmurfs, addSmurfs } from "./actions";
 
 import AddForm from './components/AddForm';
 import SmurfList from './components/SmurfList';
@@ -12,6 +12,9 @@ import "./App.css";
 const App = (props)=> {
   useEffect(() => {
     props.fetchSmurfs();
+  },[])
+  useEffect(() => {
+    props.addSmurfs();
   },[])
 
   return (
@@ -35,7 +38,7 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {fetchSmurfs})(App);
+export default connect(mapStateToProps, {fetchSmurfs, addSmurfs})(App);
 
 //Task List:
 //1. Connect the fetchSmurfs actions to the App component.
